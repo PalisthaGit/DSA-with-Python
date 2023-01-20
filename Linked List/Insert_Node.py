@@ -67,10 +67,10 @@ class Linked_List:
     # insert node in linked list
     def insert_node(self, index, x):
 
-        if index < 0 or index > self.count_elements():
+        if index < 1 or index > self.count_elements():
             return
 
-        if index == 0:
+        if index == 1:
             # create a new node
             new_node = Node(x)
 
@@ -79,6 +79,14 @@ class Linked_List:
 
             # make head point to new node
             self.head = new_node
+        
+        else:
+            new_node = Node(x)
+            current = self.head
+            for i in range(0, index-1):
+                current = current.next
+            new_node.next = current.next
+            current.next = new_node
 
 
 # create object of linked list
@@ -88,7 +96,11 @@ linked_list = Linked_List()
 
 # create linked list
 linked_list.create_linked_list()
+
 # insert node in linked list
-linked_list.insert_node(0, 12)
+linked_list.insert_node(1, 9090)
+
+# insert node in linked list
+linked_list.insert_node(2, 12)
 # print linked list
 linked_list.traverse_list()
